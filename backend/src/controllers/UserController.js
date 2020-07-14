@@ -6,7 +6,7 @@ module.exports = {
         const { username, password } = req.body;
 
         try{
-            const auth = User.findOne({
+            const auth = await User.findOne({
                 attributes: ['id'],
                 where:{
                     [Op.or]:[
@@ -15,8 +15,6 @@ module.exports = {
                     ]
                 }
             });
-
-            console.log({ id: auth})
 
             if(!auth)
                 return res.status(400).json({ error: 'Dados informados estão incorretos'});
