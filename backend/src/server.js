@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require("./router");
+const routes = require("./routes");
 require('./database');
 
 const app = express();
@@ -9,5 +10,6 @@ app.disable('x-powered-by');
 
 app.use(express.json());
 app.use(router);
+app.use(routes);
 
 app.listen(port);
